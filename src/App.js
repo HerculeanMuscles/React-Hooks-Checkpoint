@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import MovieList from "./components/MovieList";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 
 function App() {
 	const [titleFilter, setTitleFilter] = useState("");
