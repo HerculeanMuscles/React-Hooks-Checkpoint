@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MovieList from "./MovieList";
 
 export default function ShowMovie() {
 	const [titleFilter, setTitleFilter] = useState("");
 	const [ratingFilter, setRatingFilter] = useState("");
+	const [movies, setMovies] = useState([]);
 
 	const handleTitleChange = (event) => {
 		setTitleFilter(event.target.value);
@@ -12,6 +13,12 @@ export default function ShowMovie() {
 	const handleRatingChange = (event) => {
 		setRatingFilter(event.target.value);
 	};
+
+	useEffect(() => {
+		// Retrieve movies from local storage
+		const storedMovies = JSON.parse(localStorage.getItem("movies")) || [];
+		setMovies(storedMovies);
+	}, []); // The empty dependency array ensures this effect runs once on component mount
 
 	return (
 		<div className="App">
@@ -32,7 +39,11 @@ export default function ShowMovie() {
 					onChange={handleRatingChange}
 				/>
 			</div>
-			<MovieList titleFilter={titleFilter} ratingFilter={ratingFilter} />
+			<MovieList
+				titleFilter={titleFilter}
+				ratingFilter={ratingFilter}
+				movieList={movies}
+			/>
 		</div>
 	);
 }

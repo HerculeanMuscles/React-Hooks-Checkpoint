@@ -11,10 +11,10 @@ export default function Header() {
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="me-auto">
 							<Link to={"/"} className="nav-link">
-								About
+								Movie
 							</Link>
 							<Link to={"/CreateMovie"} className="nav-link">
-								Works
+								Add Movie
 							</Link>
 						</Nav>
 					</Navbar.Collapse>

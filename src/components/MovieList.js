@@ -1,13 +1,20 @@
 // MovieList.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
-import MovieData from "./MovieData";
-import { filterMoviesByTitleAndRating } from "./Filter"; // Import the filter function
+import { filterMoviesByTitleAndRating } from "./Filter";
 
 export default function MovieList({ titleFilter, ratingFilter }) {
+	const [movies, setMovies] = useState([]);
+
+	useEffect(() => {
+		// Retrieve movies from local storage
+		const storedMovies = JSON.parse(localStorage.getItem("movies")) || [];
+		setMovies(storedMovies);
+	}, []);
+
 	// Filter movies based on title and rating criteria
 	const filteredMovies = filterMoviesByTitleAndRating(
-		MovieData,
+		movies,
 		titleFilter,
 		ratingFilter
 	);
