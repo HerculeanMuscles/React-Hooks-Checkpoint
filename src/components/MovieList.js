@@ -5,9 +5,9 @@ import MovieData from "./MovieData";
 export default function MovieList() {
 	return (
 		<>
-			<div className="player-list">
-				{MovieData.map((player, index) => (
-					<MovieCard key={index} {...player} />
+			<div className="movie-list">
+				{MovieData.map((movie, index) => (
+					<MovieCard key={index} {...movie} />
 				))}
 			</div>
 		</>
